@@ -1,5 +1,13 @@
 #pragma once
 
+#include <iostream>
+#include <Windows.h>
+
+#define _CRTDBG_MAP_ALLOC
+#include <stdlib.h>
+#include <crtdbg.h>
+
+
 #ifdef ENGINE_EXPORTS	//ENGINE_EXPORTS 전처리기 정의가 추가되어있다면 ENGINE_API 정의를 DLL 내보내기로 선언
 #define ENGINE_API __declspec( dllexport )
 #else	//ENGINE_EXPORTS 전처리기 정의가 추가되어있지 않다면 ENGINE_API 정의를 DLL 가져오기로 선언
@@ -7,9 +15,18 @@
 #endif
 
 
+//메모리 누수를 검사하여 출력 창에 띄우기
+inline void CheckMemoryLeak()
+{
+	_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
+}
 
 
 
+
+
+
+//키보드 입력 
 
 /*
  * Virtual Keys, Standard Set
