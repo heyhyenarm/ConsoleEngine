@@ -21,7 +21,40 @@ inline void CheckMemoryLeak()
 	_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
 }
 
+//로그 레벨 분류
+enum ELogCategory
+{
+	Log,
+	Warning,
+	Error
+};
 
+
+//로그 출력 창에 띄우기
+template<typename... T>
+inline void Log(ELogCategory category, const char* logTemp, T... args)
+{
+	//전달받은 문자열 주소값을 버퍼에 저장
+	char buffer[512];
+	snprintf(buffer, sizeof(buffer), logTemp, args ...);
+	std::cout << buffer;
+
+	//상세 로그 수준에 따른 출력 변화
+	//Todo: 색 변경ㅇ하기
+	switch (category)
+	{
+	case(ELogCategory::Log):
+
+		std::cout << buffer;
+		break;
+	case(ELogCategory::Warning):
+		std::cout << buffer;
+		break;
+	case(ELogCategory::Error):
+		std::cout << buffer;
+		break;
+	}
+}
 
 
 
