@@ -1,9 +1,14 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.12.35527.113 d17.12
+VisualStudioVersion = 17.12.35527.113
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Engine", "Engine\Engine.vcxproj", "{DA40E079-D195-44C2-9D7C-3D94B3941132}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ConsoleRoguelikeGame", "ConsoleRoguelikeGame\ConsoleRoguelikeGame.vcxproj", "{336F32D6-17CF-4E9A-898D-FDCE93E311E7}"
+	ProjectSection(ProjectDependencies) = postProject
+		{DA40E079-D195-44C2-9D7C-3D94B3941132} = {DA40E079-D195-44C2-9D7C-3D94B3941132}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +26,14 @@ Global
 		{DA40E079-D195-44C2-9D7C-3D94B3941132}.Release|x64.Build.0 = Release|x64
 		{DA40E079-D195-44C2-9D7C-3D94B3941132}.Release|x86.ActiveCfg = Release|Win32
 		{DA40E079-D195-44C2-9D7C-3D94B3941132}.Release|x86.Build.0 = Release|Win32
+		{336F32D6-17CF-4E9A-898D-FDCE93E311E7}.Debug|x64.ActiveCfg = Debug|x64
+		{336F32D6-17CF-4E9A-898D-FDCE93E311E7}.Debug|x64.Build.0 = Debug|x64
+		{336F32D6-17CF-4E9A-898D-FDCE93E311E7}.Debug|x86.ActiveCfg = Debug|Win32
+		{336F32D6-17CF-4E9A-898D-FDCE93E311E7}.Debug|x86.Build.0 = Debug|Win32
+		{336F32D6-17CF-4E9A-898D-FDCE93E311E7}.Release|x64.ActiveCfg = Release|x64
+		{336F32D6-17CF-4E9A-898D-FDCE93E311E7}.Release|x64.Build.0 = Release|x64
+		{336F32D6-17CF-4E9A-898D-FDCE93E311E7}.Release|x86.ActiveCfg = Release|Win32
+		{336F32D6-17CF-4E9A-898D-FDCE93E311E7}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
