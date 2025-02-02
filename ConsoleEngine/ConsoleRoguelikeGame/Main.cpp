@@ -5,5 +5,5 @@ int main()
 {
 	CheckMemoryLeak();
 
-	//Log(ELogCategory::Warning, L"aaaaa\r\n");
+	Log(ELogCategory::Warning, L"aaaaa\r\n");
 }

@@ -181,43 +181,43 @@ inline void SetColor(Color color)
 }
 
 //로그 출력 창에 띄우기
-//template<typename... T>
-//void Log(ELogCategory category, const char* logTemp, T&&... args)
-//{
-//	//출력 모드를 가상 터미널 시퀀스 핸들 모드로 변경
-//	HANDLE hOut = GetStdHandle(STD_OUTPUT_HANDLE);
-//	DWORD dwMode = 0;
-//	dwMode |= ENABLE_VIRTUAL_TERMINAL_PROCESSING;
-//
-//	SetConsoleMode(hOut, dwMode);
-//
-//	//전달받은 문자열 주소값을 버퍼에 저장
-//	char buffer[1024];
-//	snprintf(buffer, sizeof(buffer), logTemp, args ...);
-//	//std::cout << buffer;
-//
-//	//상세 로그 수준에 따른 출력 변화
-//	//색 변경하기, ESC: \x1b[
-//	switch (category)
-//	{
-//	case(ELogCategory::Logging):
-//		printf_s("%s%d%s", ESC, VT_FOREGROUND_WHITE_BRIGHT, buffer);
-//		//SetColor(Color::White);
-//		break;
-//	case(ELogCategory::Warning):
-//		//std::cout << ESC << VT_FOREGROUND_YELLOW << buffer;
-//		printf_s("%s%d%s", ESC, VT_FOREGROUND_YELLOW, buffer);
-//		//SetColor(Color::Blue);
-//		break;
-//	case(ELogCategory::Error):
-//		//std::cout<< ESC << VT_FOREGROUND_RED << buffer;
-//		printf_s("%s%d%s", ESC, VT_FOREGROUND_RED, buffer);
-//		//SetColor(Color::Red);
-//		break;
-//	}
-//
-//	std::cout << buffer;
-//}
+template<typename... T>
+void Log(ELogCategory category, const char* logTemp, T&&... args)
+{
+	//출력 모드를 가상 터미널 시퀀스 핸들 모드로 변경
+	HANDLE hOut = GetStdHandle(STD_OUTPUT_HANDLE);
+	DWORD dwMode = 0;
+	dwMode |= ENABLE_VIRTUAL_TERMINAL_PROCESSING;
+
+	SetConsoleMode(hOut, dwMode);
+
+	//전달받은 문자열 주소값을 버퍼에 저장
+	char buffer[1024];
+	snprintf(buffer, sizeof(buffer), logTemp, args ...);
+	//std::cout << buffer;
+
+	//상세 로그 수준에 따른 출력 변화
+	//색 변경하기, ESC: \x1b[
+	switch (category)
+	{
+	case(ELogCategory::Logging):
+		printf_s("%s%d%s", ESC, VT_FOREGROUND_WHITE_BRIGHT, buffer);
+		//SetColor(Color::White);
+		break;
+	case(ELogCategory::Warning):
+		//std::cout << ESC << VT_FOREGROUND_YELLOW << buffer;
+		printf_s("%s%d%s", ESC, VT_FOREGROUND_YELLOW, buffer);
+		//SetColor(Color::Blue);
+		break;
+	case(ELogCategory::Error):
+		//std::cout<< ESC << VT_FOREGROUND_RED << buffer;
+		printf_s("%s%d%s", ESC, VT_FOREGROUND_RED, buffer);
+		//SetColor(Color::Red);
+		break;
+	}
+
+	std::cout << buffer;
+}
 
 //Todo: 유니코드 추가하기
 template<typename... T>
@@ -227,26 +227,6 @@ void Log(ELogCategory category, const wchar_t* logTemp, T&&... args)
 	HANDLE hOut = GetStdHandle(STD_OUTPUT_HANDLE);
 	DWORD dwMode = 0;
 	dwMode |= ENABLE_VIRTUAL_TERMINAL_PROCESSING;
-
-	//SetConsoleMode(hOut, dwMode);
-
-	//HANDLE hOut = GetStdHandle(STD_OUTPUT_HANDLE);
-	//if (hOut == INVALID_HANDLE_VALUE)
-	//{
-	//	return GetLastError();
-	//}
-
-	//DWORD dwMode = 0;
-	//if (!GetConsoleMode(hOut, &dwMode))
-	//{
-	//	return GetLastError();
-	//}
-
-	//dwMode |= ENABLE_VIRTUAL_TERMINAL_PROCESSING;
-	//if (!SetConsoleMode(hOut, dwMode))
-	//{
-	//	return GetLastError();
-	//}
 
 	//전달받은 문자열 주소값을 버퍼에 저장
 	wchar_t buffer[1024];
